@@ -39,7 +39,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        return $this->data['status'] === 'paid';  //paid, confirm_check ?
+        return $this->data['status'] === 'paid';  //paid_over, confirm_check ?
     }
 
     public function getTransactionId()
@@ -59,7 +59,7 @@ class CompletePurchaseResponse extends AbstractResponse
     
     public function getMoney()
     {
-        return (string)$this->data['merchant_amount'];
+        return $this->data['merchant_amount']*$this->data['payer_amount_exchange_rate'];
     }
 
     public function getTransactionReference()
