@@ -32,8 +32,8 @@ class InvoiceRequest extends AbstractRequest
     private function getRequestBody()
     {
         $return =  array_filter([
-            'amount'            => $this->getAmount(),
-            'order_id'          => $this->getTransactionId(),
+            'amount'            => (string)$this->getAmount(),
+            'order_id'          => (string)$this->getTransactionId(),
             'to_currency'       => $this->getPaymentMethod(),
             'currency'          => $this->getCurrency(),
             'url_return'        => $this->getReturnUrl(),
