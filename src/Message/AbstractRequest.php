@@ -61,7 +61,7 @@ abstract class AbstractRequest extends Request
 
     public function getLocale() 
     {
-        return $this->getParameter('lalocaleng');
+        return $this->getParameter('locale');
     }
 
     public function setReturnUrl($value)
