@@ -79,7 +79,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
         $signStr = json_encode($data, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     
-        $sign = md5(base64_encode($signStr) . $this->getSecretKey());
+        $sign = md5(base64_encode($signStr) . $this->request->getSecretKey());
 
         info(['calculateSignature', $data, $sign]);
         
