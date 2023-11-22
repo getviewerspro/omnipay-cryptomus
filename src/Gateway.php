@@ -49,7 +49,7 @@ class Gateway extends AbstractGateway
     
     public function setLocale($value)
     {
-        return $this->setParameter("lang", $value);
+        return $this->setParameter('lang', $value);
     }
 
     public function getLocale() {

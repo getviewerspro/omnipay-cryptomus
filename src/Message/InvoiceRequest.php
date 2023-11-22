@@ -40,6 +40,8 @@ class InvoiceRequest extends AbstractRequest
             'url_success'       => $this->getSuccessUrl(),
             'url_callback'      => $this->getResultUrl(),
         ]);
+
+        info('Locale:'.$this->getLocale());
         
         info(['Cryptomus request body: ', $return]);
         

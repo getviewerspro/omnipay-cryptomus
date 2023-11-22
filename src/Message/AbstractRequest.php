@@ -52,7 +52,7 @@ abstract class AbstractRequest extends Request
 
     public function setLocale($value)
     {
-        return $this->setParameter("lang", $value);
+        return $this->setParameter('lang', $value);
     }
 
     public function getLocale() {
