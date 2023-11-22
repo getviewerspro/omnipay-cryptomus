@@ -69,7 +69,7 @@ class InvoiceRequest extends AbstractRequest
     {        
         $data = json_encode($data,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         $sign = $this->getSign();
-        $shopId = $this->getShoId();
+        $shopId = $this->getShopId();
 
         $curl = curl_init();
         
