@@ -14,11 +14,13 @@ abstract class AbstractRequest extends Request
         return $this->productionUri;
     }
 
-    public function setSign($value) {
+    public function setSign($value) 
+    {
         return $this->setParameter('sign', $value);
     }
 
-    public function getSign() {
+    public function getSign() 
+    {
         return $this->getParameter('sign');
     }
 
@@ -37,7 +39,8 @@ abstract class AbstractRequest extends Request
         return $this->setParameter("shopId", $value);
     }
 
-    public function getShopId() {
+    public function getShopId() 
+    {
         return $this->getParameter('shopId');
     }   
     
@@ -46,17 +49,19 @@ abstract class AbstractRequest extends Request
         return $this->setParameter("to_currency", $value);
     }
 
-    public function getPaymentMethod() {
+    public function getPaymentMethod() 
+    {
         return $this->getParameter('to_currency');
     }
 
     public function setLocale($value)
     {
-        return $this->setParameter('lang', $value);
+        return $this->setParameter('locale', $value);
     }
 
-    public function getLocale() {
-        return $this->getParameter('lang');
+    public function getLocale() 
+    {
+        return $this->getParameter('lalocaleng');
     }
 
     public function setReturnUrl($value)
@@ -64,7 +69,8 @@ abstract class AbstractRequest extends Request
         return $this->setParameter("return_url", $value);
     }
 
-    public function getReturnUrl() {
+    public function getReturnUrl() 
+    {
         return $this->getParameter('return_url');
     }
 
@@ -73,7 +79,8 @@ abstract class AbstractRequest extends Request
         return $this->setParameter("result_url", $value);
     }
 
-    public function getResultUrl() {
+    public function getResultUrl() 
+    {
         return $this->getParameter('result_url');
     }
 
@@ -82,7 +89,8 @@ abstract class AbstractRequest extends Request
         return $this->setParameter("success_url", $value);
     }
 
-    public function getSuccessUrl() {
+    public function getSuccessUrl() 
+    {
         return $this->getParameter('success_url');
     }
 }

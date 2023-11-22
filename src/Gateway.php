@@ -15,7 +15,7 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
-            'lang' => 'en'
+            'locale' => 'en'
         ];
     }
 
@@ -49,13 +49,12 @@ class Gateway extends AbstractGateway
     
     public function setLocale($value)
     {
-        info('set locale:'.$value);
-        return $this->setParameter('lang', $value);
+        return $this->setParameter('locale', $value);
     }
 
     public function getLocale() 
     {
-        return $this->getParameter('lang');
+        return $this->getParameter('locale');
     }
 
     public function setReturnUrl($value)
