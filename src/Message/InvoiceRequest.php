@@ -1,13 +1,13 @@
 <?php
 
-namespace Omnipay\Lava\Message;
+namespace Omnipay\Cryptomus\Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 
 class InvoiceRequest extends AbstractRequest
 {
     protected $method     = 'POST';
-    public $productionUri = "https://api.lava.ru/business/invoice/create";
+    public $productionUri = "https://api.cryptomus.com/v1/payment";
 
     /**
      * @throws InvalidRequestException
@@ -41,7 +41,7 @@ class InvoiceRequest extends AbstractRequest
         
         $return['customFields'] = json_encode($return);
         
-        info(['Lava request body: ', $return]);
+        info(['Cryptomus request body: ', $return]);
         
         return $return;
     }

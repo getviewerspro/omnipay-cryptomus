@@ -1,25 +1,26 @@
 {
-    "name": "getviewerspro/omnipay-lava",
+    "name": "getviewerspro/omnipay-cryptomus",
     "type": "library",
-    "description": "Lava driver for Omnipay PHP payment library",
+    "description": "Cryptomus driver for Omnipay PHP payment library",
     "keywords": [
         "php",
         "omnipay",
-        "lava",
+        "cryptomus",
         "merchant",
         "payment"
     ],
-    "homepage": "https://github.com/getviewerspro/omnipay-lava",
+    "homepage": "https://github.com/getviewerspro/omnipay-cryptomus",
     "license": "MIT",
     "require": {
         "omnipay/common": "^3.0"
     },
     "require-dev": {
-        "omnipay/tests": "^3.0"
+        "omnipay/tests": "^3.0",
+        "http-interop/http-factory-guzzle": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "Omnipay\\Lava\\": "src"
+            "Omnipay\\Cryptomus\\": "src"
         }
     }
 }

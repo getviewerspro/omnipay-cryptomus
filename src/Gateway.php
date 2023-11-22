@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Lava;
+namespace Omnipay\Cryptomus;
 
 use Omnipay\Common\AbstractGateway;
 
@@ -9,7 +9,7 @@ class Gateway extends AbstractGateway
 
     public function getName()
     {
-        return "Lava";
+        return "Cryptomus";
     }
 
     public function getDefaultParameters()
@@ -68,12 +68,12 @@ class Gateway extends AbstractGateway
 
     public function createInvoice(array $options = [])
     {
-        return $this->createRequest('\Omnipay\Lava\Message\InvoiceRequest', $options);
+        return $this->createRequest('\Omnipay\Cryptomus\Message\InvoiceRequest', $options);
     }
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Lava\Message\PurchaseRequest
+     * @return \Omnipay\Cryptomus\Message\PurchaseRequest
      */
     public function purchase(array $parameters = [])
     {
@@ -82,12 +82,12 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Lava\Message\CompletePurchaseRequest
+     * @return \Omnipay\Cryptomus\Message\CompletePurchaseRequest
      */
     public function completePurchase(array $parameters = [])
     {
         info($parameters);
-        return $this->createRequest('\Omnipay\Lava\Message\CompletePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Cryptomus\Message\CompletePurchaseRequest', $parameters);
     }
 
 }

@@ -1,14 +1,14 @@
 <?php
 /**
- * Lava driver for Omnipay PHP payment library
+ * Cryptomus driver for Omnipay PHP payment library
  *
- * @link      https://github.com/getviewerspro/omnipay-lava
- * @package   omnipay-lava
+ * @link      https://github.com/getviewerspro/omnipay-cryptomus
+ * @package   omnipay-cryptomus
  * @license   MIT
  * @copyright Copyright (c) 2023, getViewersPRO (https://getviewers.pro/)
  */
 
-namespace Omnipay\Lava\Message;
+namespace Omnipay\Cryptomus\Message;
 
 use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\AbstractResponse;
@@ -32,7 +32,7 @@ class CompletePurchaseResponse extends AbstractResponse
         
         ksort($this->data);
         
-        info(['Lava webhook data: ', $this->data]);
+        info(['Cryptomus webhook data: ', $this->data]);
 
         if ($this->getSign() !== $this->calculateSignature()) {
             throw new InvalidResponseException('Invalid hash');
@@ -71,7 +71,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
     public function getSign()
     {
-        info(['Lava webhook Authorization: ', request()->header('Authorization')]);
+        info(['Cryptomus webhook Authorization: ', request()->header('Authorization')]);
         
         return request()->header('Authorization');
     }

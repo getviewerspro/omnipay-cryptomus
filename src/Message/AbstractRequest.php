@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Lava\Message;
+namespace Omnipay\Cryptomus\Message;
 
 use Omnipay\Common\Message\AbstractRequest as Request;
 

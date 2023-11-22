@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Lava\Message;
+namespace Omnipay\Cryptomus\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
@@ -14,7 +14,7 @@ class InvoiceResponse extends AbstractResponse implements RedirectResponseInterf
         $this->request = $request;
         $this->data    = $data; 
 
-        info(['Lava InvoiceResponse data: ', $this->data]);
+        info(['Cryptomus InvoiceResponse data: ', $this->data]);
     }
     
     public function isSuccessful()

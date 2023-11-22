@@ -1,17 +1,17 @@
 <?php
 /**
- * Lava driver for Omnipay PHP payment library
+ * Cryptomus driver for Omnipay PHP payment library
  *
- * @link      https://github.com/getviewerspro/omnipay-lava
- * @package   omnipay-lava
+ * @link      https://github.com/getviewerspro/omnipay-cryptomus
+ * @package   omnipay-cryptomus
  * @license   MIT
  * @copyright Copyright (c) 2023, getViewersPRO (https://getviewers.pro/)
  */
 
-namespace Omnipay\Lava\Message;
+namespace Omnipay\Cryptomus\Message;
 
 /**
- * Lava Complete Purchase Request.
+ * Cryptomus Complete Purchase Request.
  */
 class CompletePurchaseRequest extends AbstractRequest
 {
