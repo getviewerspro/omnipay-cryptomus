@@ -43,7 +43,8 @@ class Gateway extends AbstractGateway
         return $this->setParameter("shopId", $value);
     }
 
-    public function getShopId() {
+    public function getShopId() 
+    {
         return $this->getParameter('shopId');
     }
     

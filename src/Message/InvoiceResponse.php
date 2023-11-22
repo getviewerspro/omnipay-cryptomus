@@ -55,7 +55,7 @@ class InvoiceResponse extends AbstractResponse implements RedirectResponseInterf
     public function getRedirectData()
     {
         return [
-            'lang' => $this->request->getLocale()
+            'lang' => json_decode($this->data['result']['additional_data'])['lang']
         ];
     }
 }
