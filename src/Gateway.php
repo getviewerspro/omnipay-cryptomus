@@ -15,7 +15,7 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
-            'locale' => 'en'
+            'lang' => 'en'
         ];
     }
 
@@ -28,24 +28,14 @@ class Gateway extends AbstractGateway
     {
         return $this->getParameter("secretKey");
     }
-
-    public function setSecretKeyAdd($value)
+ 
+    public function setPaymentMethod($value)
     {
-        return $this->setParameter("secretKeyAdd", $value);
+        return $this->setParameter("to_currency", $value);
     }
 
-    public function getSecretKeyAdd()
-    {
-        return $this->getParameter("secretKeyAdd");
-    }
-    
-    public function setPaymentMethods($value)
-    {
-        return $this->setParameter("paymentMethods", $value);
-    }
-
-    public function getPaymentMethods() {
-        return $this->getParameter('paymentMethods');
+    public function getPaymentMethod() {
+        return $this->getParameter('to_currency');
     }
     
     public function setShopId($value)
@@ -59,11 +49,11 @@ class Gateway extends AbstractGateway
     
     public function setLocale($value)
     {
-        return $this->setParameter("locale", $value);
+        return $this->setParameter("lang", $value);
     }
 
     public function getLocale() {
-        return $this->getParameter('locale');
+        return $this->getParameter('lang');
     }
 
     public function createInvoice(array $options = [])

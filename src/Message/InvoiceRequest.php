@@ -32,14 +32,14 @@ class InvoiceRequest extends AbstractRequest
     private function getRequestBody()
     {
         $return =  array_filter([
-            'sum'               => $this->getAmount(),
-            'orderId'           => $this->getTransactionId(),
-            'shopId'            => $this->getShopId(),
-            'includeService'    => (!empty($this->getPaymentMethod()) ? [$this->getPaymentMethod()] : $this->getPaymentMethods()),
-            'comment'           => $this->getDescription(),
+            'amount'            => $this->getAmount(),
+            'order_id'          => $this->getTransactionId(),
+            'to_currency'       => $this->getPaymentMethod(),
+            'currency'          => $this->getCurrency(),
+            'url_return'        => $this->getReturnUrl(),
+            'url_success'       => $this->getSuccessUrl(),
+            'url_callback'      => $this->getResultUrl(),
         ]);
-        
-        $return['customFields'] = json_encode($return);
         
         info(['Cryptomus request body: ', $return]);
         
@@ -51,11 +51,7 @@ class InvoiceRequest extends AbstractRequest
         $signStr = json_encode($this->getRequestBody(), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         
         return $this->setSign(
-            hash_hmac(
-                'sha256',
-                $signStr,
-                $this->getSecretKey()
-            )
+            md5(base64_encode($signStr) . $this->getSecretKey())
         );
     }
     
@@ -73,12 +69,14 @@ class InvoiceRequest extends AbstractRequest
     {        
         $data = json_encode($data,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         $sign = $this->getSign();
+        $shopId = $this->getShoId();
 
         $curl = curl_init();
         
         curl_setopt_array($curl, array(
             CURLOPT_URL => $this->getEndpoint(), 
-            CURLOPT_RETURNTRANSFER => true, CURLOPT_ENCODING => '',
+            CURLOPT_RETURNTRANSFER => true, 
+            CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 5,
             CURLOPT_FOLLOWLOCATION => true, 
@@ -86,7 +84,7 @@ class InvoiceRequest extends AbstractRequest
             CURLOPT_CUSTOMREQUEST => 'POST', 
             CURLOPT_POSTFIELDS => $data, 
             CURLOPT_HTTPHEADER => array(
-                'Accept: application/json', 'Content-Type: application/json', 'Signature: ' . $sign
+                'Accept: application/json', 'Content-Type: application/json', 'sign: '.$sign, 'merchant: '.shopId
             ), 
         ));
 

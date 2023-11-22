@@ -30,9 +30,7 @@ class CompletePurchaseResponse extends AbstractResponse
         $this->request = $request;
         $this->data    = request()->all();//$this->getData(); 
         
-        ksort($this->data);
-        
-        info(['Cryptomus webhook data: ', $this->data]);
+        info(['Cryptomus webhook data (CompletePurchaseResponse): ', $this->data]);
 
         if ($this->getSign() !== $this->calculateSignature()) {
             throw new InvalidResponseException('Invalid hash');
@@ -41,7 +39,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        return $this->data['status'] === 'success';
+        return $this->data['status'] === 'paid_over';  //paid, confirm_check ?
     }
 
     public function getTransactionId()
@@ -56,37 +54,34 @@ class CompletePurchaseResponse extends AbstractResponse
 
     public function getCurrency()
     {
-        return 'RUB';
+        return $this->data['currency'];
     }    
     
     public function getMoney()
     {
-        return (string)$this->data['credited'];
+        return (string)$this->data['merchant_amount'];
     }
 
     public function getTransactionReference()
     {
-        return $this->data['invoice_id'];
+        return $this->data['uuid'];
     }
 
     public function getSign()
     {
-        info(['Cryptomus webhook Authorization: ', request()->header('Authorization')]);
-        
-        return request()->header('Authorization');
+        return $this->data['sign'];
     }
     
     public function calculateSignature()
-    {
-        $signStr = json_encode($this->data, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
-        
-        $sign = hash_hmac(
-                'sha256',
-                $signStr,
-                $this->request->getSecretKeyAdd()
-            );
-        
-        info(['calculateSignature', $this->data, $this->request->getSecretKeyAdd(), $sign]);
+    {        
+        $data = $this->data;
+        unset($data['sign']);
+
+        $signStr = json_encode($data, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+    
+        $sign = md5(base64_encode($signStr) . $this->getSecretKey());
+
+        info(['calculateSignature', $data, $sign]);
         
         return $sign;
     }

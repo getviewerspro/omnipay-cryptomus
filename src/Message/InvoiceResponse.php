@@ -19,22 +19,22 @@ class InvoiceResponse extends AbstractResponse implements RedirectResponseInterf
     
     public function isSuccessful()
     {
-        if (!isset($this->data['data']['status'])) {
+        if (!isset($this->data['state']) || empty($this->data['result'])) {
             return false;
         }
         
-        return ($this->data['data']['status'] == 1) ? true : false;
+        return ($this->data['state'] == 0) ? true : false;
 
     }
 
     public function getInvoiceId()
     {
-        return $this->data['data']['id'];
+        return $this->data['result']['uuid'];
     }
 
     public function getInvoiceLink()
     {            
-        return $this->data['data']['url'] ?? '';
+        return $this->data['result']['url'] ?? '';
     }
 
     public function getMessage()
