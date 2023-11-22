@@ -55,6 +55,32 @@ class Gateway extends AbstractGateway
     public function getLocale() {
         return $this->getParameter('lang');
     }
+    public function setReturnUrl($value)
+    {
+        return $this->setParameter("return_url", $value);
+    }
+
+    public function getReturnUrl() {
+        return $this->getParameter('return_url');
+    }
+
+    public function setResultUrl($value)
+    {
+        return $this->setParameter("result_url", $value);
+    }
+
+    public function getResultUrl() {
+        return $this->getParameter('result_url');
+    }
+
+    public function setSuccessUrl($value)
+    {
+        return $this->setParameter("success_url", $value);
+    }
+
+    public function getSuccessUrl() {
+        return $this->getParameter('success_url');
+    }
 
     public function createInvoice(array $options = [])
     {
