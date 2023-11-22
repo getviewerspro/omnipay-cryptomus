@@ -84,7 +84,7 @@ class InvoiceRequest extends AbstractRequest
             CURLOPT_CUSTOMREQUEST => 'POST', 
             CURLOPT_POSTFIELDS => $data, 
             CURLOPT_HTTPHEADER => array(
-                'Accept: application/json', 'Content-Type: application/json', 'sign: '.$sign, 'merchant: '.shopId
+                'Accept: application/json', 'Content-Type: application/json', 'sign: '.$sign, 'merchant: '.$shopId
             ), 
         ));
 
