@@ -34,7 +34,8 @@ class Gateway extends AbstractGateway
         return $this->setParameter("to_currency", $value);
     }
 
-    public function getPaymentMethod() {
+    public function getPaymentMethod() 
+    {
         return $this->getParameter('to_currency');
     }
     
@@ -99,6 +100,7 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $parameters = [])
     {
+        info($parameters);
         return $this->createInvoice($parameters);
     }
 
