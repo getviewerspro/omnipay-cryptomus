@@ -41,8 +41,6 @@ class InvoiceRequest extends AbstractRequest
             'url_callback'      => $this->getResultUrl()
         ]);
         
-        info(['Cryptomus request body: ', $return]);
-        
         return $return;
     }
 

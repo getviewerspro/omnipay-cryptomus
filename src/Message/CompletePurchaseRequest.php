@@ -21,7 +21,6 @@ class CompletePurchaseRequest extends AbstractRequest
      */
     public function getData()
     {
-        info(['CompletePurchaseRequest:getData', $this->httpRequest->request->all()]);
         return $this->httpRequest->request->all();
     }
 

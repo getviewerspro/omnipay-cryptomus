@@ -13,8 +13,6 @@ class InvoiceResponse extends AbstractResponse implements RedirectResponseInterf
     {
         $this->request = $request;
         $this->data    = $data; 
-
-        info(['Cryptomus InvoiceResponse data: ', $this->data]);
     }
     
     public function isSuccessful()

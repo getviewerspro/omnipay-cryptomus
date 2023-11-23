@@ -29,8 +29,6 @@ class CompletePurchaseResponse extends AbstractResponse
     {
         $this->request = $request;
         $this->data    = request()->all();//$this->getData(); 
-        
-        info(['Cryptomus webhook data (CompletePurchaseResponse): ', $this->data]);
 
         if ($this->getSign() !== $this->calculateSignature()) {
             throw new InvalidResponseException('Invalid hash');
@@ -80,8 +78,6 @@ class CompletePurchaseResponse extends AbstractResponse
         $signStr = json_encode($data, JSON_UNESCAPED_UNICODE);
     
         $sign = md5(base64_encode($signStr) . $this->request->getSecretKey());
-
-        info(['calculateSignature', $data, $sign]);
         
         return $sign;
     }
