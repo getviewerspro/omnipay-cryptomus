@@ -79,7 +79,6 @@ class CompletePurchaseResponse extends AbstractResponse
     
         $sign = md5(base64_encode($signStr) . $this->request->getSecretKey());
         
-        
         return $sign;
     }
 }
