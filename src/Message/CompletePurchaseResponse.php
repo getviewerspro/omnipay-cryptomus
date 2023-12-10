@@ -57,7 +57,7 @@ class CompletePurchaseResponse extends AbstractResponse
     
     public function getMoney()
     {
-        return $this->data['merchant_amount']*$this->data['payer_amount_exchange_rate'];
+        return ($this->data['merchant_amount']*$this->data['payer_amount_exchange_rate']) . ' ' . $this->getCurrency();
     }
 
     public function getTransactionReference()
