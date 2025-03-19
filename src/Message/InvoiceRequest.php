@@ -7,7 +7,7 @@ use Omnipay\Common\Exception\InvalidRequestException;
 class InvoiceRequest extends AbstractRequest
 {
     protected $method     = 'POST';
-    public $productionUri = "https://api.cryptomus.com/v1/payment";
+    public $productionUri = "https://api.heleket.com/v1/payment";
 
     /**
      * @throws InvalidRequestException
